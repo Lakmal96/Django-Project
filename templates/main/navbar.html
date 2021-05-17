@@ -1,0 +1,56 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand text-white" href="">Kolamba Kade</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{% url 'items' %}">Items</a>
+                </li>
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="">Customized Orders</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="">Cart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="">Posts</a>
+                </li>
+                {% endif %}
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{% url 'logout' %}">Logout</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{% url 'select_role' %}">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{% url 'login' %}">Sign in</a>
+                </li>
+                {% endif %}
+            </ul>
+            <form class="d-flex" method="GET" action="{% url 'query' %}">
+                <input class="form-control me-2" type="search" name="q" placeholder="Search" aria-label="Search">
+                <button class="btn btn-success" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<!-- <div class="container-fluid bg-info">
+    <ul class="nav nav-tabs nav-fill bg-info">
+        <li class="nav-item"><a class="nav-link text-white" href="">Home</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="">Items</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="">Customized Orders</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="">Cart</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="">My Account</a></li>
+    </ul>
+</div> -->

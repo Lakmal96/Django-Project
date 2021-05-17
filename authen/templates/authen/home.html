@@ -1,0 +1,24 @@
+{% extends 'main/base.html' %}
+{% load static%}
+
+{% block base_header %}
+<!-- <link rel="stylesheet" type="text/css" href="{% static 'main/css/main.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'authen/css/home.css' %}"> -->
+<title>Home Page</title>
+{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated and user.is_supplier %}
+{% include 'main/navbar_supplier.html' %}
+{% include 'authen/supplier_home.html' %}
+{% elif user.is_authenticated and user.is_customer %}
+{% include 'main/navbar.html'%}
+{% else %}
+{% include 'main/navbar_home.html'%}
+{% endif %}
+
+
+
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'main/base.html' %}
+
+<!-- Header section of the page (title and custom css) -->
+{% block base_header %}
+
+<title>Items-{{ object.id }}</title>
+
+{% endblock %}
+
+<!-- Main section of the page -->
+{% block content%}
+
+{{ object.name }}<br>
+{{ object.description}}<br>
+{{ object.price }}<br>
+
+{% endblock %}
