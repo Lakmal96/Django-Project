@@ -24,7 +24,8 @@ urlpatterns = [
     path('', include('authen.urls')),
     path('products/', include('products.urls')),
     path('customized/', include('customized.urls')),
-    path('search/', include('search.urls'))
+    path('search/', include('search.urls')),
+    path('category/', include('catogories.urls'))
 ]
 
 if settings.DEBUG:

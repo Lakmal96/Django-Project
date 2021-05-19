@@ -13,6 +13,20 @@
                 <li class="nav-item">
                     <a class="nav-link text-white" href="{% url 'items' %}">Items</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{% url 'category_list' %}">Category</a>
+                </li>
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="">Customized Orders</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="">Cart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="">Posts</a>
+                </li>
+                {% endif %}
                 {% if user.is_authenticated %}
                 <li class="nav-item">
                     <a class="nav-link text-white" href="{% url 'logout' %}">Logout</a>

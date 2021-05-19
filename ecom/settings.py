@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'authen',
     'customized',
     'search',
-    'tags'
+    'tags',
+    'catogories'
 
 ]
 

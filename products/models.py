@@ -4,6 +4,7 @@ from .utils import unique_slug_generator
 from django.urls import reverse
 
 from tags.models import Tag
+from catogories.models import Category
 
 # Create your models here.
 
@@ -18,6 +19,8 @@ class ItemManager(models.Manager):
 
 class Item(models.Model):
     name = models.CharField(max_length=200)
+    category = models.ForeignKey(
+        Category, on_delete=models.CASCADE, null=True)
     slug = models.SlugField(blank=True, unique=True)
     description = models.TextField()
     price = models.DecimalField(max_digits=15, decimal_places=2)
