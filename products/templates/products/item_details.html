@@ -1,17 +1,38 @@
 {% extends 'main/base.html' %}
+{% load static %}
 
 <!-- Header section of the page (title and custom css) -->
 {% block base_header %}
 
-<title>Items-{{ object.id }}</title>
+<title>Items-{{ item.id }}</title>
+
 
 {% endblock %}
 
 <!-- Main section of the page -->
 {% block content%}
+{% include 'main/navbar.html' %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <h3>{{item.name}}</h3>
+            <img src="{{ item.image.url }}" alt="" class="img-fluid">
+        </div>
+        <div class="col-md-6">
+            <h5>{{item.name}}</h5>
+            <h6>{{item.category}}</h6>
+            <p>{{ item.description }}</p>
+            {% for size in sizes %}
+            <button class="btn btn-outline-primary choose-size" get-price={{size.price}}>{{size.size__title}}</button>
+            {% endfor %}
+            <p class="display-price">{{size.price}}</p>
+        </div>
+    </div>
+</div>
 
-{{ object.name }}<br>
-{{ object.description}}<br>
-{{ object.price }}<br>
 
+
+{% endblock %}
+{% block base_footer %}
+<script type="text/javascript" src="{% static 'products/js/item_detail.js' %}"></script>
 {% endblock %}
