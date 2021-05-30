@@ -1,19 +1,13 @@
 {% for obj in object_list %}
-<div class="col-md-4">
+<div class="col-md-3">
     <div class="card my-2">
         <a href='{{ obj.get_absolute_url }}'><img src="{{ obj.image.url }}" class="card-img-top" alt=""
                 height="250px"></a>
-        <div class="card-header bg-primary">
-            <h5 class="text-center">{{ obj.name }}</h5>
-        </div>
-        <div class="card-body bg-info">
-            <h6>Price : Rs. {{ obj.price }}</h6>
-        </div>
-        <div class="card-footer d-grid bg-info">
-            <a href='{{ obj.get_absolute_url }}' class="btn btn-dark">Description</a>
-            <!-- when we use reverse
-            <a href="{% url 'detail' slug=obj.slug %}" class="btn btn-warning">Description</a> -->
+        <div class="card-header bg-secondary">
+            <h5 class="text-center text-white">{{ obj.name }}</h5>
+            <a href='{{ obj.get_absolute_url }}' class="btn btn-primary btn-block">Description</a>
         </div>
     </div>
 </div>
+
 {% endfor %}

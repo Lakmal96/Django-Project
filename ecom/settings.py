@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'customized',
     'search',
     'tags',
-    'catogories'
+    'catogories',
+    'carts'
 
 ]
 
@@ -86,7 +87,7 @@ WSGI_APPLICATION = 'ecom.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ecom',
+        'NAME': 'djangoecommerce',
         'USER': 'postgres',
         'PASSWORD': '1234',
         'HOST': 'localhost'

@@ -6,6 +6,18 @@ from products.models import Item, Category
 # Create your views here.
 
 
+class CategoryList(ListView):
+    queryset = Category.objects.all()
+    template_name = 'categories/category_list.html'
+
+
+def CategoryView(request, cat_id):
+    category = Category.objects.get(id=cat_id)
+    context = {
+        'items': Item.objects.filter(category=category)
+    }
+    return render(request, 'categories/category_list_view.html', context)
+
 # class CategoryListView(ListView):
 #     queryset = Item.objects.all()
 #     # queryset = Category.objects.all()
@@ -30,15 +42,3 @@ from products.models import Item, Category
 #         items = items.filter(category=category)
 
 #     return render(request, 'categories/category_list_view.html', {'category_slug': category_slug, 'category': category, 'items': items})
-
-class CategoryList(ListView):
-    queryset = Category.objects.all()
-    template_name = 'categories/category_list.html'
-
-
-def CategoryView(request, cat_id):
-    category = Category.objects.get(id=cat_id)
-    context = {
-        'items': Item.objects.filter(category=category)
-    }
-    return render(request, 'categories/category_list_view.html', context)

@@ -13,21 +13,23 @@
 {% include 'main/navbar.html' %}
 
 <div class="container">
+    <h1 class="text-center mt-2 text-info">All Categories</h1>
+    <hr>
     <div class="row">
 
         {% for cat in object_list %}
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="card my-2">
                 <a href='{{ cat.get_absolute_url }}'><img src="{{ cat.image.url }}" class="card-img-top" alt=""
-                        height="250px"></a>
-                <div class="card-header bg-primary">
-                    <h5 class="text-center">{{ cat.name }}</h5>
+                        height="300px"></a>
+                <div class="card-header bg-secondary">
+                    <h5 class="text-center text-white">{{ cat.name }}</h5>
                 </div>
-                <div class="card-body bg-info">
+                <div class="card-body">
                     <h6>{{ cat.description }}</h6>
                 </div>
-                <div class="card-footer d-grid bg-info">
-                    <a href='{{ cat.get_absolute_url }}' class="btn btn-dark">Let's Go</a>
+                <div class="card-footer">
+                    <a href='{{ cat.get_absolute_url }}' class="btn btn-primary btn-block">Let's Go</a>
                 </div>
             </div>
         </div>

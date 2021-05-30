@@ -8,7 +8,6 @@ from products.models import Item
 
 
 class SearchItemView(ListView):
-    #queryset = Item.objects.all()
     template_name = "search/view.html"
 
     def get_queryset(self, *args, **kwargs):
@@ -16,6 +15,6 @@ class SearchItemView(ListView):
         query = request.GET.get('q')
         if query is not None:
             lookups = Q(name__icontains=query) | Q(
-                description__icontains=query) | Q(price__icontains=query) | Q(tags__name__icontains=query)
+                description__icontains=query) | Q(selling_price__icontains=query) | Q(tags__name__icontains=query)
             return Item.objects.filter(lookups).distinct()
         return Item.objects.none()

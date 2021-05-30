@@ -15,18 +15,13 @@
 <div class="container">
     <div class="row">
         {% for item in items %}
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="card my-2">
                 <a href='{{ item.get_absolute_url }}'><img src="{{ item.image.url }}" class="card-img-top" alt=""
                         height="250px"></a>
-                <div class="card-header bg-primary">
-                    <h5 class="text-center">{{ item.name }}</h5>
-                </div>
-                <div class="card-body bg-info">
-                    <h6>Price : Rs. {{ item.price }}</h6>
-                </div>
-                <div class="card-footer d-grid bg-info">
-                    <a href='{{ item.get_absolute_url }}' class="btn btn-dark">Description</a>
+                <div class="card-header bg-secondary">
+                    <h5 class="text-center text-white">{{ item.name }}</h5>
+                    <a href='{{ item.get_absolute_url }}' class="btn btn-primary btn-block">Description</a>
                 </div>
             </div>
         </div>

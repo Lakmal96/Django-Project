@@ -3,15 +3,31 @@
 <!-- Header section of the page (title and custom css) -->
 {% block base_header %}
 
-<title>Items-{{ object.id }}</title>
+<title>Items-{{ item.id }}</title>
 
 {% endblock %}
 
 <!-- Main section of the page -->
 {% block content%}
+{% include 'main/navbar.html' %}
+<div class="container my-3">
+    <h2>{{item.name}}</h2>
+    <hr>
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{item.image.url}}" alt="" class="img-fluid">
+        </div>
+        <div class="col-md-6 my-5">
+            <h4 class="text-info">{{item.name}} (Viewed {{item.view_count}} times)</h4>
+            <h5 class="text-info">{{item.features}}</h5>
+            <h6>Price: <strike>{{item.marked_price}}</strike> {{item.selling_price}}</h6>
+            <a href="{% url 'add_to_cart' item.id %}" class="btn btn-info">Add To Cart</a>
+            <hr>
+            <p>{{item.description}}</p>
+        </div>
+    </div>
+</div>
 
-{{ object.name }}<br>
-{{ object.description}}<br>
-{{ object.price }}<br>
+
 
 {% endblock %}

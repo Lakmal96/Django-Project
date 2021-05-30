@@ -1,6 +1,7 @@
 from django.http import Http404
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
+from . import views
 
 from . models import Item
 
@@ -16,9 +17,16 @@ class ItemListView(ListView):
     #     return Item.objects.all()
 
 
-class ItemDetailView(DetailView):
-    queryset = Item.objects.all()
-    template_name = "products/item_details.html"
+def item_detail(request, slug):
+    item = Item.objects.get(slug=slug)
+    item.view_count += 1
+    item.save()
+    return render(request, 'products/item_details.html', {'item': item})
+
+
+# class ItemDetailView(DetailView):
+#     queryset = Item.objects.all()
+#     template_name = "products/item_details.html"
 
     # def get_object(self, *args, **kwargs):
     #     request = self.request

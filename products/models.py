@@ -9,12 +9,12 @@ from catogories.models import Category
 # Create your models here.
 
 
-class ItemManager(models.Manager):
-    def get_by_id(self, id):
-        qs = self.get_queryset().filter(id=id)  # Item.objects == self.get_queryset()
-        if qs.count() == 1:
-            return qs.first()
-        return None
+# class ItemManager(models.Manager):
+#     def get_by_id(self, id):
+#         qs = self.get_queryset().filter(id=id)  # Item.objects == self.get_queryset()
+#         if qs.count() == 1:
+#             return qs.first()
+#         return None
 
 
 class Item(models.Model):
@@ -23,12 +23,16 @@ class Item(models.Model):
         Category, on_delete=models.CASCADE, null=True)
     slug = models.SlugField(blank=True, unique=True)
     description = models.TextField()
-    price = models.DecimalField(max_digits=15, decimal_places=2)
     image = models.ImageField(upload_to='products/')
-    quantity = models.IntegerField()
+    features = models.CharField(max_length=200, null=True)
+    marked_price = models.DecimalField(
+        max_digits=15, decimal_places=2, default=0.00)
+    selling_price = models.DecimalField(
+        max_digits=15, decimal_places=2, default=0.00)
     tags = models.ManyToManyField(Tag, blank=True)
+    view_count = models.IntegerField(default=0)
 
-    objects = ItemManager()
+    # objects = ItemManager()
 
     def get_absolute_url(self):
         return "/products/{slug}/".format(slug=self.slug)
