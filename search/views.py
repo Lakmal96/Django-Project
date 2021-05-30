@@ -15,6 +15,10 @@ class SearchItemView(ListView):
         query = request.GET.get('q')
         if query is not None:
             lookups = Q(name__icontains=query) | Q(
+<<<<<<< HEAD
                 description__icontains=query) | Q(selling_price__icontains=query) | Q(tags__name__icontains=query)
+=======
+                description__icontains=query) | Q(tags__name__icontains=query)
+>>>>>>> e3e133833a4b7782be97c8884b89e5fab0d26d75
             return Item.objects.filter(lookups).distinct()
         return Item.objects.none()

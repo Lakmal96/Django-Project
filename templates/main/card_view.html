@@ -3,9 +3,21 @@
     <div class="card my-2">
         <a href='{{ obj.get_absolute_url }}'><img src="{{ obj.image.url }}" class="card-img-top" alt=""
                 height="250px"></a>
+<<<<<<< HEAD
         <div class="card-header bg-secondary">
             <h5 class="text-center text-white">{{ obj.name }}</h5>
             <a href='{{ obj.get_absolute_url }}' class="btn btn-primary btn-block">Description</a>
+=======
+        <div class="card-header bg-primary">
+            <h5 class="text-center">{{ obj.name }}</h5>
+        </div>
+        <div class="card-body bg-info">
+            <h6>Price : Rs. {{ obj.price }}</h6>
+        </div>
+        <div class="card-footer d-grid bg-info">
+            <a href='{{ obj.get_absolute_url }}' class="btn btn-dark">Description</a>
+
+>>>>>>> e3e133833a4b7782be97c8884b89e5fab0d26d75
         </div>
     </div>
 </div>

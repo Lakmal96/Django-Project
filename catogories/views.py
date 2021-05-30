@@ -13,10 +13,16 @@ class CategoryList(ListView):
 
 def CategoryView(request, cat_id):
     category = Category.objects.get(id=cat_id)
+<<<<<<< HEAD
     context = {
         'items': Item.objects.filter(category=category)
     }
     return render(request, 'categories/category_list_view.html', context)
+=======
+    items = Item.objects.filter(category=category)
+    return render(request, 'categories/category_list_view.html', {'items': items})
+
+>>>>>>> e3e133833a4b7782be97c8884b89e5fab0d26d75
 
 # class CategoryListView(ListView):
 #     queryset = Item.objects.all()

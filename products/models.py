@@ -9,6 +9,16 @@ from catogories.models import Category
 # Create your models here.
 
 
+<<<<<<< HEAD
+=======
+class Size(models.Model):
+    title = models.CharField(max_length=10)
+
+    def __str__(self):
+        return self.title
+
+
+>>>>>>> e3e133833a4b7782be97c8884b89e5fab0d26d75
 # class ItemManager(models.Manager):
 #     def get_by_id(self, id):
 #         qs = self.get_queryset().filter(id=id)  # Item.objects == self.get_queryset()
@@ -24,6 +34,7 @@ class Item(models.Model):
     slug = models.SlugField(blank=True, unique=True)
     description = models.TextField()
     image = models.ImageField(upload_to='products/')
+<<<<<<< HEAD
     features = models.CharField(max_length=200, null=True)
     marked_price = models.DecimalField(
         max_digits=15, decimal_places=2, default=0.00)
@@ -31,16 +42,29 @@ class Item(models.Model):
         max_digits=15, decimal_places=2, default=0.00)
     tags = models.ManyToManyField(Tag, blank=True)
     view_count = models.IntegerField(default=0)
+=======
+    tags = models.ManyToManyField(Tag, blank=True)
+    status = models.BooleanField(default=True)
+>>>>>>> e3e133833a4b7782be97c8884b89e5fab0d26d75
 
     # objects = ItemManager()
 
     def get_absolute_url(self):
-        return "/products/{slug}/".format(slug=self.slug)
+        return "/products/{slug}/{id}".format(slug=self.slug, id=self.id)
         # when we use reverse
         # return reverse("detail", kwargs={"slug": self.slug})
 
     def __str__(self):
         return self.name
+
+
+class ItemAttribute(models.Model):
+    item = models.ForeignKey(Item, on_delete=models.CASCADE)
+    size = models.ForeignKey(Size, on_delete=models.CASCADE)
+    price = models.DecimalField(max_digits=15, decimal_places=2)
+
+    def __str__(self):
+        return self.item.name
 
 
 def item_pre_save_receiver(sender, instance, *args, **kwargs):
